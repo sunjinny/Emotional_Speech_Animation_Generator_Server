@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+	 <h1>Emotional Facial Animation Generator</h1>
+	 <form action="/emotional-facial-animation/rest/generate-animation" method="post" enctype="multipart/form-data">
+		<h2>Public Parameters</h2>
+		<p>
+			<label for="sentence_jaso">Sentence File (.txt, mandatory)</label>
+			<input type="file" name="sentence_jaso">
+		</p>
+		<p>
+			<label for="sentence_neural_timing">TTS Activation File (.npy, mandatory)</label>
+			<input type="file" name="sentence_neural_timing">
+		</p>
+		<p>
+			<label for="sentence_audio_wav">TTS Audio File (.wav, mandatory)</label>
+			<input type="file" name="sentence_audio_wav">
+		</p>
+		<p>
+			Gender of the speaker (mandatory):
+			<input type="radio" id="speaker_gender_man" name="speaker_gender" value="30001" checked>
+			<label for="speaker_gender_man">Man</label>
+			<input type="radio" id="speaker_gender_woman" name="speaker_gender" value="30002">
+			<label for="speaker_gender_woman">Woman</label>
+		</p>
+		<p>
+			Emotional strengths (0 is the weakest, 3 is the strongest):
+			<div>
+				<label for="emotion_strength[10001]">Happiness</label>
+				<select name="emotion_strength[10001]">
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+				</select>
+			</div>
+			<div>
+				<label for="emotion_strength[10002]">Anger</label>
+				<select name="emotion_strength[10002]">
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+				</select>
+			</div>
+			<div>
+				<label for="emotion_strength[10003]">Disgust</label>
+				<select name="emotion_strength[10003]">
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+				</select>
+			</div>
+			<div>
+				<label for="emotion_strength[10004]">Fear</label>
+				<select name="emotion_strength[10004]">
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+				</select>
+			</div>
+			<div>
+				<label for="emotion_strength[10006]">Sadness</label>
+				<select name="emotion_strength[10006]">
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+				</select>
+			</div>
+			<div>
+				<label for="emotion_strength[10007]">Surprise</label>
+				<select name="emotion_strength[10007]">
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+				</select>
+			</div>
+		</p>
+		<h2>Internal Parameters</h2>
+		<p>(You don't need to care of it in most cases)</p>
+		<p>
+			<label for="tts_activation_timestep">TTS Activation Timestep (optional)</label>
+			<input type="number" name="tts_activation_timestep">
+		</p>
+		<p>
+			<label for="tts_sampling_hop">TTS sampling Hop (optional)</label>
+			<input type="number" name="tts_sampling_hop">
+		</p>
+		<h2>Actions</h2>
+		<p>
+			<input type="submit" value="Generate">
+			<input type="reset" value="Reset">
+		</p>
+	 </form>
+</body>
+</html>
