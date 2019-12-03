@@ -51,3 +51,9 @@ All APIs are RESTful.
    - MIME type: `application/xml`
    - Encoding: `utf-8`
    - The content of `.xml` file of the generated animation data will be returned. Save it and pass the content to our Android module part.
+
+
+## Updated contents
+- Additional input parameter(hair_model)
+- Changed code(generating emotional speech animation and output file)
+- Changed docker file and additional library(librosa)
