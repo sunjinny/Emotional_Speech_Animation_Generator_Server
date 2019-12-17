@@ -330,9 +330,9 @@ class TTSLipSynchAnimator:
 				# weight = rescale(weight, (0.25, 1.0))
 				# if (jamoList.values()[i] * self.maxWeight) > 0.01: # Denoising
 				if type(list(jamoList.keys())[i]) is tuple:
-					self._keySingleViseme(self.visemeMap[jamoList.keys()[i][0]], weight * self.maxWeight, f2 * spfUnit)
+					self._keySingleViseme(self.visemeMap[list(jamoList.keys())[i][0]], weight * self.maxWeight, f2 * spfUnit)
 					postTime = (f2 * spfUnit) + (spfUnit * (2 / 3.0))
-					self._keySingleViseme(self.visemeMap[jamoList.keys()[i][1]], weight * self.maxWeight, postTime)
+					self._keySingleViseme(self.visemeMap[list(jamoList.keys())[i][1]], weight * self.maxWeight, postTime)
 				else:
 					if list(jamoList.keys())[i] == 'Rest':
 						jamoList['Rest'] *= 0.4

@@ -32,6 +32,7 @@ def generateEmotionAnimation(animationGenerator,emotionDirPath, emotionStrengths
 	for emotionName, emotionWeight in emotionStrengths.items():
 		randomNumber = random.randrange(0, 3)
 		emotionFilePath = os.path.join(emotionDirPath, '%s_%d.json' % (emotionName, randomNumber))
+		# emotionFilePath = os.path.join(emotionDirPath, '%s_0.json' %emotionName)
 		with open(emotionFilePath, 'r') as fp:
 			data = json.load(fp, encoding = 'utf-8')
 			data['keys'] = {int(key): value for key, value in data['keys'].items()}

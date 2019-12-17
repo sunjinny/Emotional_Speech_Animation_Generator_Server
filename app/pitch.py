@@ -33,10 +33,12 @@ class HeadNodding:
             self.onset = self.onset_frames[i] + onset_offset
             self.index = self.magnitudes[:, self.onset].argmax()
             self.pitch = self.pitches[self.index, self.onset]
-            if (self.pitch != 0):
-                self.savePitch.append(self.pitch)
-                self.result = (self.time[i], self.savePitch[i])  # tuple
-                self.pitchRecords.append(self.result)
+            if (self.pitch < 0):
+                self.pitch = 0      # threshold
+            self.savePitch.append(self.pitch)
+            self.result = (self.time[i], self.savePitch[i])  # tuple
+            self.pitchRecords.append(self.result)
+
         return self.pitchRecords
 
 

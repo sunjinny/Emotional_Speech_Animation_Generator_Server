@@ -1,10 +1,10 @@
 def calculatingRelation(minM, maxM):
 	if minM == 0 and maxM == 0:
-		return 0, 0.9 # x = 0, y = 0.9
+		return 0, 0.5 # x = 0, y = 0.9
 	elif (minM - maxM) == 0:
 		x = 0
 	else:
-		x = -0.1 / (minM - maxM)
+		x = -0.4 / (minM - maxM)
 	y = 1 - (maxM * x)
 	return x, y
 

@@ -46,10 +46,12 @@ def uploadFiles():
 	else:
 		return 'Invalid gender', 400
 
-	# hair_model = request.form.get['hair_model', default = 0]
-	# hairList = ['0', '1']
-	# if hair_model not in hairList:
-	#	hair_model = 0
+	hair_model = request.form.get('hair_model', None)
+	hairList = ['0', '1']
+	if hair_model is None:
+		hair_model = '0'
+	elif hair_model not in hairList:
+		hair_model = '0'
 
 	timestepHop = 3
 	ttsActivationTimestep = 25
@@ -82,11 +84,9 @@ def uploadFiles():
 
 	fps = 60
 	if emotionCheck == 0:
-		exporting_output.generateOutputFileInSpeech(animationGenerator_speech, int(audioSize), fps, speaker_gender, pitchInfo)
-		# exporting_output.generateOutputFileInSpeech(animationGenerator_speech, int(audioSize), fps, speaker_gender, hair_model, pitchInfo)
+		exporting_output.generateOutputFileInSpeech(animationGenerator_speech, int(audioSize), fps, speaker_gender, hair_model, pitchInfo)
 	else:
-		exporting_output.generateOutputFileInSpeechAndEmotion(animationGenerator_speech, animationGenerator_emotion, audioSize, fps, speaker_gender, minM, maxM, pitchInfo)
-		# exporting_output.generateOutputFileInSpeechAndEmotion(animationGenerator_speech, animationGenerator_emotion, audioSize, fps, speaker_gender, hair_model, minM, maxM, pitchInfo)
+		exporting_output.generateOutputFileInSpeechAndEmotion(animationGenerator_speech, animationGenerator_emotion, audioSize, fps, speaker_gender, hair_model, minM, maxM, pitchInfo)
 
 
 	return send_file('./animation_data.xml', mimetype='application/xml')

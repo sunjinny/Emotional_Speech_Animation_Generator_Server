@@ -2,17 +2,16 @@ from xml.etree.ElementTree import Element, SubElement, dump, ElementTree
 import blending
 from animation import Animation
 
-def generateOutputFileInSpeechAndEmotion(speechAnimation, emotionAnimation, audioSize, fps, inputGender, minM, maxM, pitchInfo):
-# def generateOutputFileInSpeechAndEmotion(speechAnimation, emotionAnimation, audioSize, fps, inputGender, inputHair, minM, maxM, pitchInfo):
+def generateOutputFileInSpeechAndEmotion(speechAnimation, emotionAnimation, audioSize, fps, inputGender, inputHair, minM, maxM, pitchInfo):
 	relationOfM_x, relationOfM_y = blending.calculatingRelation(minM, maxM)
 	animation = Element("animation")
 	animation.attrib["name"] = "speech_emotion_animation"
 	gender = Element("gender")
 	gender.attrib["gender"] = inputGender
 	animation.append(gender)
-	# hairModel = Element("hair_model")
-	# hairModel.attrib["hair_model"] = inputHair
-	# animation.append(hairModel)
+	hairModel = Element("hair_model")
+	hairModel.attrib["hair_model"] = inputHair
+	animation.append(hairModel)
 	keyframeList = Element("keyframeList")
 	animation.append(keyframeList)
 
@@ -76,16 +75,15 @@ def generateOutputFileInSpeechAndEmotion(speechAnimation, emotionAnimation, audi
 
 
 
-def generateOutputFileInSpeech(Animation, audioSize, fps, inputGender, pitchInfo):
-# def generateOutputFileInSpeech(Animation, audioSize, fps, inputGender, inputHair, pitchInfo):
+def generateOutputFileInSpeech(Animation, audioSize, fps, inputGender, inputHair, pitchInfo):
 	animation = Element("animation")
 	animation.attrib["name"] = "speech_animation"
 	gender = Element("gender")
 	gender.attrib["gender"] = inputGender
 	animation.append(gender)
-	# hairModel = Element("hair_model")
-	# hairModel.attrib["hair_model"] = inputHair
-	# animation.append(hairModel)
+	hairModel = Element("hair_model")
+	hairModel.attrib["hair_model"] = inputHair
+	animation.append(hairModel)
 	keyframeList = Element("keyframeList")
 	animation.append(keyframeList)
 	key = Element("key")
