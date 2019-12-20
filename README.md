@@ -3,7 +3,7 @@ This is the part of Emotional Facial Animation module for Flagship project by [V
 
 ## Authors
  - Project Manager: Sunjin Jung (<sunjin225@kaist.ac.kr>)
- - Server codes written by Minjung Jang(<joyful8296@kaist.ac.kr>)
+ - Server codes written by Minjung Jang(<joyful8296@kaist.ac.kr>) and Sunjin Jung
 
 
 ## Tested Environment
@@ -57,3 +57,4 @@ All APIs are RESTful.
 - Additional input parameter(hair_model)
 - Changed code(generating emotional speech animation and output file)
 - Changed docker file and additional library(librosa)
+- Changed emotional data(.json files)
