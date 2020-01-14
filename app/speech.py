@@ -25,7 +25,7 @@ def decompose_korean_to_jamo(unicode_text):
 		('', u'ㄱ', u'ㄲ', u'ㄳ', u'ㄴ', u'ㄵ', u'ㄶ', u'ㄷ', u'ㄹ', u'ㄺ', u'ㄻ', u'ㄼ', u'ㄽ', u'ㄾ', u'ㄿ', u'ㅀ', u'ㅁ', u'ㅂ',
 		u'ㅄ', u'ㅅ', u'ㅆ', u'ㅇ', u'ㅈ', u'ㅊ', u'ㅋ', u'ㅌ', u'ㅍ', u'ㅎ')
 	)
-	result_text = unicode()
+	result_text = str()
 	for grapheme in unicode_text:
 		code_point = ord(grapheme)
 		if code_point >= 0xAC00 and code_point <= 0xD7AF:
