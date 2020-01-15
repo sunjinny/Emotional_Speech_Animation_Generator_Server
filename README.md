@@ -41,12 +41,12 @@ All APIs are RESTful.
      - `sentence_audio_wav` (type=`file`, *mandatory*): The `.wav` audio file that is made by the Korean TTS module.
      - `speaker_gender` (type=`number`, *mandatory*): The gender of the speeching character. `30001` is the man, `30002` is the woman.
      - `hair_model` (type=`number`, optional): The hair model type of the girl character. `0` is the basic hair, `1` is the hair with a hat.
-     - `emotion_strength[10001]` (type=`number`, optional): Emotion strength of *happiness*.
-     - `emotion_strength[10002]` (type=`number`, optional): Emotion strength of *anger*.
-     - `emotion_strength[10003]` (type=`number`, optional): Emotion strength of *disgust*.
-     - `emotion_strength[10004]` (type=`number`, optional): Emotion strength of *fear*.
-     - `emotion_strength[10006]` (type=`number`, optional): Emotion strength of *sadness*.
-     - `emotion_strength[10007]` (type=`number`, optional): Emotion strength of *surprise*.
+     - `emotion_strength[10001]` (type=`number`, *mandatory*): Emotion strength(range:0.0~1.0) of *happiness*.
+     - `emotion_strength[10002]` (type=`number`, *mandatory*): Emotion strength(range:0.0~1.0) of *anger*.
+     - `emotion_strength[10003]` (type=`number`, *mandatory*): Emotion strength(range:0.0~1.0) of *disgust*.
+     - `emotion_strength[10004]` (type=`number`, *mandatory*): Emotion strength(range:0.0~1.0) of *fear*.
+     - `emotion_strength[10006]` (type=`number`, *mandatory*): Emotion strength(range:0.0~1.0) of *sadness*.
+     - `emotion_strength[10007]` (type=`number`, *mandatory*): Emotion strength(range:0.0~1.0) of *surprise*.
  - Output
    - MIME type: `application/xml`
    - Encoding: `utf-8`
