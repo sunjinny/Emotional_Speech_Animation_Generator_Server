@@ -2,7 +2,7 @@ from xml.etree.ElementTree import Element, SubElement, dump, ElementTree
 import blending
 from animation import Animation
 
-def generateOutputFileInSpeechAndEmotion(speechAnimation, emotionAnimation, audioSize, fps, inputGender, inputHair, minM, maxM, pitchInfo):
+def generateOutputFileInSpeechAndEmotion(speechAnimation, emotionAnimation, audioSize, fps, inputGender, inputHair, minM, maxM, pitchInfo, emotionStrengths):
 	relationOfM_x, relationOfM_y = blending.calculatingRelation(minM, maxM)
 	animation = Element("animation")
 	animation.attrib["name"] = "speech_emotion_animation"
@@ -12,6 +12,12 @@ def generateOutputFileInSpeechAndEmotion(speechAnimation, emotionAnimation, audi
 	hairModel = Element("hair_model")
 	hairModel.attrib["hair_model"] = inputHair
 	animation.append(hairModel)
+	emotion_strengths = Element("emotion_strength")
+	for key, value in emotionStrengths.items():
+		emotion = SubElement(emotion_strengths, "emotion")
+		emotion.attrib["emotion"] = str(key)
+		emotion.attrib["strength"] = str(value)
+	animation.append(emotion_strengths)
 	keyframeList = Element("keyframeList")
 	animation.append(keyframeList)
 
@@ -75,7 +81,7 @@ def generateOutputFileInSpeechAndEmotion(speechAnimation, emotionAnimation, audi
 
 
 
-def generateOutputFileInSpeech(Animation, audioSize, fps, inputGender, inputHair, pitchInfo):
+def generateOutputFileInSpeech(Animation, audioSize, fps, inputGender, inputHair, pitchInfo, emotionStrengths):
 	animation = Element("animation")
 	animation.attrib["name"] = "speech_animation"
 	gender = Element("gender")
@@ -84,6 +90,12 @@ def generateOutputFileInSpeech(Animation, audioSize, fps, inputGender, inputHair
 	hairModel = Element("hair_model")
 	hairModel.attrib["hair_model"] = inputHair
 	animation.append(hairModel)
+	emotion_strengths = Element("emotion_strength")
+	for key, value in emotionStrengths.items():
+		emotion = SubElement(emotion_strengths, "emotion")
+		emotion.attrib["emotion"] = str(key)
+		emotion.attrib["strength"] = str(value)
+	animation.append(emotion_strengths)
 	keyframeList = Element("keyframeList")
 	animation.append(keyframeList)
 	key = Element("key")

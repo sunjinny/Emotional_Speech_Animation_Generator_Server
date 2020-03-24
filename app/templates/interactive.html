@@ -24,60 +24,37 @@
 			<label for="speaker_gender_woman">Woman</label>
 		</p>
 		<p>
-			Emotional strengths (0 is the weakest, 3 is the strongest):
+			Hair model of the speaker:
+			<input type="radio" id="hair_model_0" name="hair_model" value="0" checked>
+			<label for="hair_model_0">0</label>
+			<input type="radio" id="hair_model_1" name="hair_model" value="1">
+			<label for="hair_model_1">1</label>
+		</p>
+		<p>
+			Emotional strengths (0 is the weakest, 1 is the strongest):
 			<div>
 				<label for="emotion_strength[10001]">Happiness</label>
-				<select name="emotion_strength[10001]">
-					<option value="0">0</option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-				</select>
+				<input type="number" name="emotion_strength[10001]" min="0" max="1" step="0.1" value="0">
 			</div>
 			<div>
 				<label for="emotion_strength[10002]">Anger</label>
-				<select name="emotion_strength[10002]">
-					<option value="0">0</option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-				</select>
+				<input type="number" name="emotion_strength[10002]" min="0" max="1" step="0.1" value="0">
 			</div>
 			<div>
 				<label for="emotion_strength[10003]">Disgust</label>
-				<select name="emotion_strength[10003]">
-					<option value="0">0</option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-				</select>
+				<input type="number" name="emotion_strength[10003]" min="0" max="1" step="0.1" value="0">
 			</div>
 			<div>
 				<label for="emotion_strength[10004]">Fear</label>
-				<select name="emotion_strength[10004]">
-					<option value="0">0</option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-				</select>
+				<input type="number" name="emotion_strength[10004]" min="0" max="1" step="0.1" value="0">
 			</div>
 			<div>
 				<label for="emotion_strength[10006]">Sadness</label>
-				<select name="emotion_strength[10006]">
-					<option value="0">0</option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-				</select>
+				<input type="number" name="emotion_strength[10006]" min="0" max="1" step="0.1" value="0">
 			</div>
 			<div>
 				<label for="emotion_strength[10007]">Surprise</label>
-				<select name="emotion_strength[10007]">
-					<option value="0">0</option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-				</select>
+				<input type="number" name="emotion_strength[10007]" min="0" max="1" step="0.1" value="0">
 			</div>
 		</p>
 		<h2>Internal Parameters</h2>

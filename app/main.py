@@ -83,11 +83,19 @@ def uploadFiles():
 	emotionDirPath = './emotion_animation_keys.blendshape' + gender + '/'
 	interactive.generateEmotionAnimation(animationGenerator_emotion, emotionDirPath, emotionStrengths, audioSize)
 
+	for key, value in emotionStrengths.items():
+		if value == 0.0:
+			emotionStrengths[key] = 0.0
+		elif value > 0.0 and value <= 0.5:
+			emotionStrengths[key] = 0.5
+		else:
+			emotionStrengths[key] = 1.0
+
 	fps = 60
 	if emotionCheck == 0:
-		exporting_output.generateOutputFileInSpeech(animationGenerator_speech, int(audioSize), fps, speaker_gender, hair_model, pitchInfo)
+		exporting_output.generateOutputFileInSpeech(animationGenerator_speech, int(audioSize), fps, speaker_gender, hair_model, pitchInfo, emotionStrengths)
 	else:
-		exporting_output.generateOutputFileInSpeechAndEmotion(animationGenerator_speech, animationGenerator_emotion, audioSize, fps, speaker_gender, hair_model, minM, maxM, pitchInfo)
+		exporting_output.generateOutputFileInSpeechAndEmotion(animationGenerator_speech, animationGenerator_emotion, audioSize, fps, speaker_gender, hair_model, minM, maxM, pitchInfo, emotionStrengths)
 
 
 	return send_file('./animation_data.xml', mimetype='application/xml')
