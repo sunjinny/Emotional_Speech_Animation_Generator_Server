@@ -1,0 +1,64 @@
+openapi: 3.0.0
+
+info:
+  title: Emotional Facial Animation Server
+  description: This is the part of Emotional Facial Animation module for Flagship project by Visual Media Lab, KAIST. This server module outputs animation data.
+  version: 1.5.0
+
+servers:
+  - url: http://localhost:3456
+
+paths:
+  /emotional-facial-animation/rest/generate-animation:
+    post:
+      summary: Create animation data
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                sentence_jaso:
+                  type: object
+                  description: The .txt file that contains the sentence of speech. The encoding of the text should be utf-8 and should not contain BOM character.
+                sentence_neural_timing:
+                  type: object
+                  description: The .npy file that contains the neural activation timing matrix from the Korean TTS module.
+                sentence_audio_wav:
+                  type: object
+                  description: The .wav audio file that is made by the Korean TTS module.
+                speaker_gender:
+                  type: number
+                  description: The gender of the speeching character. 30001 is the man, 30002 is the woman.
+                hair_model:
+                  type: number
+                  description: The hair model type of the girl character. 0 is the first hair model and 1 is the second one.
+                emotion_strength[10001]:
+                  type: number
+                  description: Emotion strength(range:0.0~1.0) of happiness.
+                emotion_strength[10002]:
+                  type: number
+                  description: Emotion strength(range:0.0~1.0) of anger.
+                emotion_strength[10003]:
+                  type: number
+                  description: Emotion strength(range:0.0~1.0) of disgust.
+                emotion_strength[10004]:
+                  type: number
+                  description: Emotion strength(range:0.0~1.0) of fear.
+                emotion_strength[10006]:
+                  type: number
+                  description: Emotion strength(range:0.0~1.0) of sadness.
+                emotion_strength[10007]:
+                  type: number
+                  description: Emotion strength(range:0.0~1.0) of surprise.
+      responses:
+        '200':
+          description: The content of .xml file of the generated animation data will be returned.
+          content:
+            application/xml:
+              schema:
+                type: object
+        '400':
+          description: The input parameter is invalid.
+ 
