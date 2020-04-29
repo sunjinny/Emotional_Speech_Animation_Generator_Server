@@ -10,10 +10,10 @@ This is the part of Emotional Facial Animation module for Flagship project by [V
 ***
 
 #### System/SW Overview
-![](.\img\server.png)
+![server_img](./img/server.png)
 * 본 시스템은 감정 기반 표정/입 생성 모듈의 서버 부분에 해당하며, 발화 텍스트, 발화 타이밍 정보, 오디오, 성별, 헤어 모델, 여섯 가지 감정별 세기를 입력으로 받아 해당되는 3D 얼굴 애니메이션 시계열 데이터를 xml 형태로 반환해주는 시스템입니다. 
 * 아래 그림은 출력된 애니메이션 시계열 데이터를 본 모듈의 안드로이드 시스템을 통해 렌더링하였을 때 표현되는 예시 이미지입니다.
-![](.\img\animation.jpg)
+![anim_img](./img/animation.jpg)
 ***
 
 #### How to Install
