@@ -1,28 +1,29 @@
-## Emotional Facial Animation - Server
+# Emotional Facial Animation - Server
 This is the part of Emotional Facial Animation module for Flagship project by [Visual Media Lab, KAIST](http://vml.kaist.ac.kr).
 
 ***
 
-#### Note
+## Note
 
 * (2020/04/29) 4월 5차년도 베이스 코드 업데이트 되었습니다.
 
 ***
 
-#### System/SW Overview
+## System/SW Overview
 ![server_img](./img/server.png)
 * 본 시스템은 감정 기반 표정/입 생성 모듈의 서버 부분에 해당하며, 발화 텍스트, 발화 타이밍 정보, 오디오, 성별, 헤어 모델, 여섯 가지 감정별 세기를 입력으로 받아 해당되는 3D 얼굴 애니메이션 시계열 데이터를 xml 형태로 반환해주는 시스템입니다. 
 * 아래 그림은 출력된 애니메이션 시계열 데이터를 본 모듈의 안드로이드 시스템을 통해 렌더링하였을 때 표현되는 예시 이미지입니다.
 ![anim_img](./img/animation.jpg)
+
 ***
 
-#### How to Install
+## How to Install
 
 - Quick start 참조
 
 ***
 
-#### Main requirement
+## Main requirement
 
 - OS: Ubuntu Linux 18.04 LTS
 - Language: Python 3.7
@@ -31,13 +32,13 @@ This is the part of Emotional Facial Animation module for Flagship project by [V
 
 ***
 
-#### Network Architecture and features
+## Network Architecture and features
 
 * 해당 사항 없음
 
 ***
 
-#### Quick start
+## Quick start
 
 - **Step 0. Building the Docker image**
 
@@ -59,7 +60,7 @@ Now the server runs on port 3456. Check http://localhost:3456/emotional-facial-a
 
 ***
 
-#### HTTP-server API description
+## HTTP-server API description
 
 * /emotional-facial-animation/rest/generate-animation
 * JSON parameters are:
@@ -112,12 +113,11 @@ data: {
 		...(이하 key 값 생략)...
 	</keyframeList>
 </animation>
-
 ```
 
 ***
 
-#### Repository overview
+## Repository overview
 
 * `emotion_animation_keys.blendshape_boy/` - contains man facial rig blendshape weights used in animation clip for 6 emotions and 3 different versions of each emotion
 * `emotion_animation_keys.blendshape_boy/10001_0.json` – the numbers before and after underscore mean emotion and version, respectively (10001: happiness, 10002: anger, 10003: disgust, 10004: fear, 10006: sadness, 10007: surprise)
@@ -137,3 +137,4 @@ data: {
 * `pitch.py` – detect head nod angle from pitch
 * `time_series.py` – perform the mathematical calculations required for detecting head nod angle from pitch
 * `exporting_output.py` – save data (gender, emotion, blendshape weights per frame, etc.) to xml fileconfiguration settings
+
