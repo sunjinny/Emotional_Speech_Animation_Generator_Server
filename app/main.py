@@ -21,11 +21,6 @@ def uploadFiles():
 	if 'sentence_audio_wav' not in request.files:
 		return 'sentence_audio_wav is not given', 400
 
-	# dict = request.form
-	# for key in dict:
-	# 	print key
-	# 	print 'form key ' + dict[key]
-
 	sentenceFile = request.files['sentence_jaso']
 	sentenceFilePath = "./"+secure_filename(sentenceFile.filename)
 	sentenceFile.save(sentenceFilePath)
@@ -52,7 +47,6 @@ def uploadFiles():
 		hair_model = '0'
 	elif hair_model not in hairList:
 		return 'Invalid hair_model', 400
-
 
 	timestepHop = 3
 	ttsActivationTimestep = 25

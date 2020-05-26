@@ -23,6 +23,7 @@ COPY ./app /app
 
 RUN python3 -m pip install --upgrade pip && \
     python3 -m pip install setuptools && \
+    python3 -m pip install llvmlite==0.31.0 && \
     python3 -m pip install librosa && \
     python3 -m pip install flask
 

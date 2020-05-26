@@ -6,6 +6,7 @@ This is the part of Emotional Facial Animation module for Flagship project by [V
 ## Note
 
 * (2020/04/29) 4월 5차년도 베이스 코드 업데이트 되었습니다.
+* (2020/05/26) 5월 5차년도 2차 베이스 코드 업데이트 되었습니다.
 
 ***
 
@@ -27,8 +28,8 @@ This is the part of Emotional Facial Animation module for Flagship project by [V
 
 - OS: Ubuntu Linux 18.04 LTS
 - Language: Python 3.7
-- Framework : Docker Server 19.03.4, librosa 0.7.1, numpy 1.17.4
-- 서버 – 클라이언트 간 작동 : HTTP RESTful API 제공 - flask 1.1.1
+- Framework : Docker Server 19.03.8, librosa 0.7.2, numpy 1.18.4, llvmlite 0.31.0
+- 서버 – 클라이언트 간 작동 : HTTP RESTful API 제공 - flask 1.1.2
 
 ***
 
