@@ -49,7 +49,7 @@ def uploadFiles():
 		return 'Invalid hair_model', 400
 
 	timestepHop = 3
-	ttsActivationTimestep = 25
+	ttsActivationTimestep = 11.6 #25
 
 	animationGenerator_speech = animation.Animation('./classifiedBsNameList'+gender+'.txt')
 
