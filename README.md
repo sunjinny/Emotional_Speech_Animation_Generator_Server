@@ -9,6 +9,7 @@ This is the part of Emotional Facial Animation module for Flagship project by [V
 * (2020/05/26) 5월 5차년도 2차 베이스 코드 업데이트 되었습니다.
 * (2020/06/29) 6월 5차년도 1차 정식 코드 파라미터 예제 파일 업로드 하였습니다.
 * (2020/09/22) 9월 TTS Timestep 값 수정하였습니다.
+* (2020/11/14) 11월 pitch 에러 수정하였습니다.
 
 ***
 

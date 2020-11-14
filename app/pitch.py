@@ -16,7 +16,7 @@ class HeadNodding:
         # wav_length
         self.wav_length = librosa.get_duration(y = self.y, sr = self.sr)
 
-        onset_offset = 5
+        onset_offset = 0 #5
         frame_stride = 0.016
         self._stride = int(round(self.sr * frame_stride))
         self.onset_frames = librosa.onset.onset_detect(y = self.y, sr = self.sr, hop_length = self._stride)
