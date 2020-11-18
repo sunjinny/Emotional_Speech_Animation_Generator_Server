@@ -91,5 +91,5 @@ class HeadNodding:
             self.noddingValue.append(self.neckAngleRecords[i][1][0])
 
         self.result_interp = np.interp(accessTime * 0.001, self.noddingTime, self.noddingValue)
-        self.result = str(self.result_interp) + " 0.0 0.0"
+        self.result = str(self.result_interp * 0.3) + " 0.0 0.0"
         return self.result
