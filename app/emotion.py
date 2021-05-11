@@ -1,58 +1,49 @@
 import math
 
 class EmotionAnimator:
-	def __init__(self, animationGenerator):
-		# type: (model_manipulator.MayaModelManipulator) -> None
+    def __init__(self, animation_generator):
+        self.animation_generator = animation_generator
 
-		self.animationGenerator = animationGenerator
+    def make_emotion(self, start_time, emotion_animations, weights, end_time):
+        def combine_sequences(weights):
+            weights = [math.log(weight + 1.0, 2) for weight in weights]
+            weight_sum = sum(weights)
 
-	def makeEmotion(self, startTime, emotionAnimations, weights, endTime):
-		# type: (float, tuple, tuple) -> None
+            resulting_sequence = {}
+            for emotion_animation, weight in zip(emotion_animations, weights):
+                source_sequence = emotion_animation['keys']
 
-		def combineSequences(weights):
-			weights = [math.log(weight + 1.0, 2) for weight in weights]
-			weightSum = sum(weights)
-			# weightSum = sum([1.0 if weight > 0.0 else 0.0 for weight in weights])
+                weight_ratio = weight / weight_sum if weight_sum != 0.0 else 0.0
+                for frame, animation_key in source_sequence.items():
+                    if frame not in resulting_sequence:
+                        resulting_sequence[frame] = {}
 
-			resultingSequence = {}
-			for emotionAnimation, weight in zip(emotionAnimations, weights):
-				sourceFps = emotionAnimation['fps']
-				sourceSequence = emotionAnimation['keys']
+                    for name, value in animation_key.items():
+                        if name not in resulting_sequence[frame]:
+                            resulting_sequence[frame][name] = 0.0
 
-				weightRatio = weight / weightSum if weightSum != 0.0 else 0.0
-				for frame, animationKey in sourceSequence.items():
-					if frame not in resultingSequence:
-						resultingSequence[frame] = {}
+                        resulting_sequence[frame][name] += value * weight * weight_ratio
 
-					for name, value in animationKey.items():
-						if name not in resultingSequence[frame]:
-							resultingSequence[frame][name] = 0.0
+            return resulting_sequence
 
-						resultingSequence[frame][name] += value * weight * weightRatio
+        fps = emotion_animations[0]['fps']
+        combined_sequence = combine_sequences(weights)
 
-			return resultingSequence
+        seq_time = 0
 
-		fps = emotionAnimations[0]['fps']
-		combinedSequence = combineSequences(weights)
+        for frame, animation_key in combined_sequence.items():
+            time = start_time + frame / float(fps)
+            time = time * 1000
 
-		seqTime = 0
+            key_value_dict = animation_key  # type: dict
+            self.animation_generator.add_value_map_in_attribute_map(key_value_dict, time)
+            seq_time = max(seq_time, time)
 
-		for frame, animationKey in combinedSequence.items():
-			time = startTime + frame / float(fps)
-			time = time * 1000
-
-			keyValueDict = animationKey  # type: dict
-			self.animationGenerator.addValueMapInAttributeMap(keyValueDict, time)
-
-			if seqTime < time:
-				seqTime = time
-
-		while endTime > seqTime :
-			restartTime = seqTime
-			for frame, animationKey in combinedSequence.items():
-				time = restartTime + frame / float(fps)
-				time = time * 1000
-				keyValueDict = animationKey  # type: dict
-				self.animationGenerator.addValueMapInAttributeMap(keyValueDict, time)
-				if seqTime < time:
-					seqTime = time
+        while end_time > seq_time :
+            restart_time = seq_time
+            for frame, animation_key in combined_sequence.items():
+                time = restart_time + frame / float(fps)
+                time = time * 1000
+                key_value_dict = animation_key  # type: dict
+                self.animation_generator.add_value_map_in_attribute_map(key_value_dict, time)
+                seq_time = max(seq_time, time)
